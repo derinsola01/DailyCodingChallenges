@@ -2,7 +2,6 @@ package com.derintester.dailycodingproblems;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.log4j.LogManager;
@@ -22,22 +21,16 @@ public class OverlappingIntervals {
         	List<Integer> tempList = Arrays.asList(mm);
         	unitSetFinal.add(tempList);
         }
-//        Collections.sort((List<Integer>) unitSetFinal);
-        logger.debug("unitSetList is: " + unitSetList);
         logger.debug("unitSetFinal is: " + unitSetFinal);
 		int arrLen = unitSet.length;
 		List<Integer> intNum1 = new ArrayList<Integer>();
 		List<List<Integer>> intNum2 = new ArrayList<List<Integer>>();
-		int count = 0;
-		while (count <= arrLen) {
-			if(count+1 == arrLen) {
-				break;
-			} else if(unitSet[count][1] >= unitSet[count+1][0]) {
+		for(int count = 0; count < arrLen - 1; count++) {
+			if(unitSet[count][1] >= unitSet[count+1][0]) {
 				Integer[] aa =  {unitSet[count][0], unitSet[count+1][1]};
 				intNum1 = Arrays.asList(aa);
 				intNum2.add(intNum1);
 			}
-			count++;
 		}
 		logger.debug("intNum2 holds:\t" + intNum2);
 	}
