@@ -33,19 +33,17 @@ public class DayFourHard {
 	 */
 	
 	public static void main(String[] args) {
-//		int[] numArray = {3, 4, -1, 1};		// Fail returns 5 instead of 2
-//		int[] numArray = {1, 2, 0};			// Pass
-//		int[] numArray = {3, 2, 0};			// Fail returns 4 instead of 1
-//		int[] numArray = {3, 5, -1, 7, 11, 1, 9, 13};		//Pass
-		int[] numArray = {5, -5, 15, 20};		//Pass
-		int lowestNum = lowestPositiveNumNotInArray(numArray);
-		for(int i = 0; i < numArray.length; i++) {
-			if(numArray[i] <= 0) {
-				numArray[i] = lowestNum;
-			}
-		}
-		logger.debug("numArray finally holds:\t" + Arrays.toString(numArray));
-		logger.debug("lowestNum is:\t" + lowestNum);
+		int[] numArray = {3, 4, -1, 1};
+//		int[] numArray = {3, 4, -1, 1, 1, 5, 5};
+//		int[] numArray = {1, 2, 0};
+//		int[] numArray = {3, 2, 0};
+//		int[] numArray = {3, 5, -1, 7, 11, 1, 9, 13};
+//		int[] numArray = {5, -5, 15, 20};
+		Arrays.sort(numArray);
+		int lowestNumNotInArray = lowestPositiveNumNotInArray(numArray);
+		Arrays.sort(numArray);
+		logger.debug("lowestNumNotInArray is: " + lowestNumNotInArray);
+		logger.debug("Array now is: " + Arrays.toString(numArray));
 	}
 
 	private static int lowestPositiveNumNotInArray(int[] numArray) {
@@ -55,32 +53,44 @@ public class DayFourHard {
 		List<String> convString = getPositiveIntegers(numArray);
 		if (convString.size() < numArrayLength) {
 			intervalNum = getInterval(convString, intervalNum);
-			logger.debug("intervalNum holds:\t" + intervalNum);
 		}
 		getArrayElement = getPossibleArrayElement(convString, intervalNum);
-		logger.debug("getArrayElement is: " + getArrayElement);
+		getArrayElement = getLowestPositiveNumberAndPlaceInArrayLocation(numArray, intervalNum, getArrayElement,
+				convString);
+		return getArrayElement;
+	}
+
+	private static int getLowestPositiveNumberAndPlaceInArrayLocation(int[] numArray, int intervalNum,
+			int getArrayElement, List<String> convString) {
 		for(int aa = 0; aa < numArray.length; aa++) {
 			if(numArray[aa] <= 0) {
-				if(convString.contains(Integer.toString(getArrayElement))) {
+				int tempNegNum = Integer.valueOf(convString.get(0));
+				if (tempNegNum - intervalNum <= 0) {
+					tempNegNum += intervalNum;
+				} 
+				else {
+					tempNegNum -= intervalNum;
+				}
+				if(convString.contains(Integer.toString(tempNegNum))) {
 					for (int ab = 0; ab < convString.size() - 1; ab++) {
 						if (Integer.valueOf(convString.get(ab)) 
 								>= Integer.valueOf(convString.get(ab + 1))) {
-							while (convString.contains(Integer.toString(getArrayElement))) {
-								getArrayElement += intervalNum;
+							while (convString.contains(Integer.toString(tempNegNum))) {
+								tempNegNum += intervalNum;
 							}
 						} else {
-							while (convString.contains(Integer.toString(getArrayElement))) {
-								getArrayElement += intervalNum;
+							while (convString.contains(Integer.toString(tempNegNum))) {
+								tempNegNum += intervalNum;
 							}
 						}
 					}
-					numArray[aa] = getArrayElement;
-		
-		
+					numArray[aa] = tempNegNum;
+				} else {
+					numArray[aa] = tempNegNum;
 				}
+				getArrayElement = tempNegNum;
 			}
 		}
-		logger.debug("numArray holds:\t" + Arrays.toString(numArray));
 		return getArrayElement;
 	}
 
@@ -107,8 +117,7 @@ public class DayFourHard {
 					diff = initDiff;
 				}
 				
-			}
-			else if(Integer.valueOf(convString.get(i)) 
+			} else if(Integer.valueOf(convString.get(i)) 
 					> Integer.valueOf(convString.get(i + 1))) {
 				initDiff = Integer.valueOf(convString.get(i)) 
 						- Integer.valueOf(convString.get(i + 1));
