@@ -23,7 +23,6 @@ public class DayTwoHard {
 
 	public static void main(String[] args) {
 		int[] givenArray = {1,2,3,4,5};
-		
 		int[] returnArray = multiplyArrayExceptIndex(givenArray);
 		logger.debug("returnArray holds:\t" + Arrays.toString(returnArray));
 	}
