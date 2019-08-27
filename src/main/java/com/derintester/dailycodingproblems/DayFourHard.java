@@ -33,8 +33,9 @@ public class DayFourHard {
 	 */
 	
 	public static void main(String[] args) {
-		int[] numArray = {3, 4, -1, 1};
+//		int[] numArray = {3, 4, -1, 1};
 //		int[] numArray = {3, 4, -1, 1, 1, 5, 5};
+		int[] numArray = {13, 14, -1, 11, 11, 15, 15};
 //		int[] numArray = {1, 2, 0};
 //		int[] numArray = {3, 2, 0};
 //		int[] numArray = {3, 5, -1, 7, 11, 1, 9, 13};
