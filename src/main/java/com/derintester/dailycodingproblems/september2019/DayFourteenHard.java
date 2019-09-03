@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import org.decimal4j.util.DoubleRounder;
 
 /**
- * @author derin
  * 
  * Question:
  * The area of a circle is defined as πr^2. Estimate π to 3 decimal places using a Monte Carlo method.
