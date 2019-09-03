@@ -20,6 +20,9 @@ public class URLEncoding {
 		for (NameValuePair param : params) {
 			logger.debug(param.getName() + " : " + param.getValue());
 		}
+		
+//		just so I can see this...
+		
 	}
 
 }
