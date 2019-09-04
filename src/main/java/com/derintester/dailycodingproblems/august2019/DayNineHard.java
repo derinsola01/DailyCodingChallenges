@@ -23,8 +23,8 @@ public class DayNineHard {
 	public static void main(String[] args) {
 //		int[] arrayList = {2, 4, 6, 2, 5};
 //		int[] arrayList = {5, 1, 1, 5};
-//		int[] arrayList = {5, 1, 10, 5, 10, 7, 8, 23, 2};
-		int[] arrayList = {5, 1, 10};
+		int[] arrayList = {5, 1, 10, 5, 10, 7, 8, 23, 2};
+//		int[] arrayList = {5, 1, 10};
 		int nonAdjacentSum = getNonAdjacentSum(arrayList);
 		logger.debug("nonAdjacentSum is:\t" + nonAdjacentSum);
 	}
