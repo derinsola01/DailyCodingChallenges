@@ -48,11 +48,11 @@ public class DayEighteenHard {
 		List<List<Integer>> subArray = new ArrayList<List<Integer>>();
 		int givenArrLength = givenArr.length;
 		if(substrLength <= givenArrLength) {
-			for(int innerIndex = 0; innerIndex <= givenArrLength - substrLength; innerIndex++) {
+			for(int outerIndex = 0; outerIndex <= givenArrLength - substrLength; outerIndex++) {
 				List<Integer> subArr = new ArrayList<Integer>();
-				int outerIndexLimit = innerIndex + substrLength;
-				for(int outerIndex = innerIndex; outerIndex < outerIndexLimit; outerIndex++) {
-					subArr.add(givenArr[outerIndex]);
+				int innerIndexLimit = outerIndex + substrLength;
+				for(int innerIndex = outerIndex; innerIndex < innerIndexLimit; innerIndex++) {
+					subArr.add(givenArr[innerIndex]);
 				}
 				subArray.add(subArr);
 			}
