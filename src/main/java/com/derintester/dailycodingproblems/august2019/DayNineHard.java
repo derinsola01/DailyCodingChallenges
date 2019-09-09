@@ -11,6 +11,12 @@ import org.apache.log4j.Logger;
  * non-adjacent numbers. Numbers can be 0 or negative.
  * For example, [2, 4, 6, 2, 5] should return 13, since we pick 2, 6, and 5. 
  * [5, 1, 1, 5] should return 10, since we pick 5 and 5.
+ * 
+ * I noticed that this solution does not solve for edge cases with input like these - 
+ * 		{1,5,1}, this solution will only add the first and third numbers.
+ * 		Also, when the input size is 2 and the second number is greater.
+ * 
+ * I will have to incorporate these and harden the algorithm.
  *
  */
 public class DayNineHard {
