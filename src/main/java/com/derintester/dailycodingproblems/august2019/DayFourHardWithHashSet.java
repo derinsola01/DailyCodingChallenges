@@ -1,8 +1,6 @@
 package com.derintester.dailycodingproblems.august2019;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,7 +21,7 @@ import org.apache.log4j.Logger;
  * You can modify the input array in-place. 
  * Solution not complete, will continue working on it till its all done.
  */
-public class DayFourHard {
+public class DayFourHardWithHashSet {
 	
 	
 	
@@ -57,7 +55,7 @@ public class DayFourHard {
 		int numArrayLength = numArray.length;
 		int intervalNum = - 1;
 		int getArrayElement = 0;
-		List<String> convString = getPositiveIntegers(numArray);
+		Set<Integer> convString = getPositiveIntegers(numArray);
 		
 		if (convString.size() < numArrayLength) {
 			intervalNum = getInterval(convString, intervalNum);
@@ -70,27 +68,28 @@ public class DayFourHard {
 				convString);
 		return getArrayElement;
 	}
-
+	
 	private static int getLowestPositiveNumberAndPlaceInArrayLocation(int[] numArray, int intervalNum,
-			int getArrayElement, List<String> convString) {
+			int getArrayElement, Set<Integer> convString) {
+		Integer[] setArr = convString.toArray(new Integer[convString.size()]);
+		List<Integer> listArr = Arrays.asList(setArr);
 		for(int aa = 0; aa < numArray.length; aa++) {
 			if(numArray[aa] <= 0) {
-				int tempNegNum = Integer.valueOf(convString.get(0));
+				int tempNegNum = setArr[0];
 				if (tempNegNum - intervalNum <= 0) {
 					tempNegNum += intervalNum;
 				} 
 				else {
 					tempNegNum -= intervalNum;
 				}
-				if(convString.contains(Integer.toString(tempNegNum))) {
-					for (int ab = 0; ab < convString.size() - 1; ab++) {
-						if (Integer.valueOf(convString.get(ab)) 
-								>= Integer.valueOf(convString.get(ab + 1))) {
-							while (convString.contains(Integer.toString(tempNegNum))) {
+				if(listArr.contains(tempNegNum)) {
+					for (int ab = 0; ab < setArr.length - 1; ab++) {
+						if (setArr[ab] >= setArr[ab + 1]) {
+							while (listArr.contains(tempNegNum)) {
 								tempNegNum += intervalNum;
 							}
 						} else {
-							while (convString.contains(Integer.toString(tempNegNum))) {
+							while (listArr.contains(tempNegNum)) {
 								tempNegNum += intervalNum;
 							}
 						}
@@ -105,28 +104,28 @@ public class DayFourHard {
 		return getArrayElement;
 	}
 	
-	private static int getPossibleArrayElement(List<String> convString, int intervalNum) {
-		int getArrayElement = (convString.size() == 0) ? 0 : Integer.valueOf(convString.get(0));
+	private static int getPossibleArrayElement(Set<Integer> convString, int intervalNum) {
+		Integer[] setArr = convString.toArray(new Integer[convString.size()]);
+		int getArrayElement = (convString.size() == 0) ? 0 : setArr[0];
 		return getArrayElement;
 	}
-
-	private static int getInterval(List<String> convString, int diff) {
+	
+	private static int getInterval(Set<Integer> convString, int diff) {
+		Integer[] setArr = convString.toArray(new Integer[convString.size()]);
+		Arrays.sort(setArr);
 		for(int i = 0; i < convString.size() - 1; i++) {
 			int initDiff = - 1;
-			if(Integer.valueOf(convString.get(i)) 
-					< Integer.valueOf(convString.get(i + 1))) {
-				initDiff = Integer.valueOf(convString.get(i + 1)) 
-						- Integer.valueOf(convString.get(i));
+			
+			if(setArr[i] < setArr[i + 1]) {
+				initDiff = setArr[i + 1] - setArr[i];
 				if(diff == - 1) {
 					diff = initDiff;
 				} else if(diff > initDiff){
 					diff = initDiff;
 				}
 				
-			} else if(Integer.valueOf(convString.get(i)) 
-					> Integer.valueOf(convString.get(i + 1))) {
-				initDiff = Integer.valueOf(convString.get(i)) 
-						- Integer.valueOf(convString.get(i + 1));
+			} else if(setArr[i] > setArr[i + 1]) {
+				initDiff = setArr[i] - setArr[i + 1];
 				if(diff == - 1) {
 					diff = initDiff;
 				} else if(diff > initDiff){
@@ -136,13 +135,12 @@ public class DayFourHard {
 		}
 		return diff;
 	}
-	
-	private static List<String> getPositiveIntegers(int[] numArray) {		
-		List<String> convString = new ArrayList<String>();
+
+	private static Set<Integer> getPositiveIntegers(int[] numArray) {		
+		Set<Integer> convString = new HashSet<Integer>();
 		for (int i = 0; i < numArray.length; i++) {
 			if(numArray[i] > 0) {
-				String number = Integer.toString(numArray[i]);
-				convString.add(number);
+				convString.add(numArray[i]);
 			}
 		}
 		return convString;
