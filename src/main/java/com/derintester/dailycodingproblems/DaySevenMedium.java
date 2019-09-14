@@ -28,14 +28,13 @@ public class DaySevenMedium {
 	 */
 	
 	public static void main(String[] args) {
-		Map<Character, Integer> loadMap = loadAlphabetMap();
 		int[] splitWays = {1,2};
 //		String givenNumber = "001";
 //		String givenNumber = "111";
 //		String givenNumber = "10";
-//		String givenNumber = "01";
+		String givenNumber = "01";
 //		String givenNumber = "4441";
-		String givenNumber = "42612341";
+//		String givenNumber = "42612341";
 		char[] numStringArr = givenNumber.toCharArray();
 		List<String> stringArr = getSingleElementsOfNumber(numStringArr);
 		int numWays = verifyNumberOfWaysToDecode(splitWays, givenNumber, stringArr);
@@ -81,15 +80,6 @@ public class DaySevenMedium {
 			  }
 			  return numOfWays;
 		}
-	}
-	private static Map<Character, Integer> loadAlphabetMap() {
-		Map<Character, Integer> loadedMap = new HashMap<Character, Integer>();
-		char[] alphabets = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-				'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-		for(int num = 0; num < alphabets.length; num++) {
-			loadedMap.put(alphabets[num], num + 1);
-		}
-		return loadedMap;
 	}
 
 }
