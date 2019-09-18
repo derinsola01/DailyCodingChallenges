@@ -3,6 +3,20 @@ package com.derintester.dailycodingproblems.september2019;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+/**
+ * @author derin
+ * 
+ * Question:
+ * 
+ * Run-length encoding is a fast and simple method of encoding strings. 
+ * The basic idea is to represent repeated successive characters as a single count 
+ * and character. For example, the string "AAAABBBCCDAA" would be encoded as "4A3B2C1D2A".
+ * 
+ * Implement run-length encoding and decoding. 
+ * You can assume the string to be encoded have no digits and consists solely of 
+ * alphabetic characters. You can assume the string to be decoded is valid.
+ *
+ */
 public class DayTwentyNine {
 	
 	private static final Logger logger = LogManager.getLogger(DayTwentyNine.class);
