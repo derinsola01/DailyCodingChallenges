@@ -15,8 +15,10 @@ public class HackerrankReview {
 		logger.debug("Enter the Number of words below...");
 		Scanner num = new Scanner(System.in); 
 		Integer number = num.nextInt();
+		num.close();
 		logger.debug("Enter a new word on a new line. No spaces.");
-		Scanner str = new Scanner(System.in); 
+		Scanner str = new Scanner(System.in);
+		str.close();
 		List<String> inputString = new ArrayList<String>();
 		for(int i = 0; i < number; i++) {
 			inputString.add(str.nextLine());

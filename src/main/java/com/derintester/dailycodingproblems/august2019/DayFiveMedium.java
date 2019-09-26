@@ -22,9 +22,10 @@ public class DayFiveMedium {
 	 * 
 	 * Implement car and cdr.
 	 */
-//	public static void main(String[] args) {
-//		int[] numArr = {1,3};
-//	}
+	public static void main(String[] args) {
+		int[] numArr = {1,3};
+		logger.debug("This is just to for file completion! " + numArr);
+	}
 //	
 //	public static int cons(int a, int b) {
 //		int pair = pair()

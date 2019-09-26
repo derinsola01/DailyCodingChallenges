@@ -1,7 +1,5 @@
 package com.derintester.dailycodingproblems.september2019;
 
-import java.util.Arrays;
-
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
