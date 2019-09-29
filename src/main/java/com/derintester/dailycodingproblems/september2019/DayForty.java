@@ -11,8 +11,8 @@ public class DayForty {
 	private static final Logger logger = LogManager.getLogger(DayForty.class);
 
 	public static void main(String[] args) {
-//		int[] givenArray = {6,1,3,3,3,6,6};
-		int[] givenArray = {13,19,13,13};
+		int[] givenArray = {6,1,3,3,3,6,6};
+//		int[] givenArray = {13,19,13,13};
 		int number = getNonDuplicateNumber(givenArray);
 		logger.debug("Non duplicate number is: " + number);
 		
@@ -29,6 +29,12 @@ public class DayForty {
 					setOfNumbers.add(givenArray[index]);
 					resultHolder = givenArray[index];
 				}
+				
+				if (((index + 1) == (givenArray.length - 1)) && !(setOfNumbers.contains(givenArray[index + 1]))) {
+					setOfNumbers.add(givenArray[index + 1]);
+					resultHolder = givenArray[index + 1];
+				}
+				
 			}
 		}
 		return resultHolder;
