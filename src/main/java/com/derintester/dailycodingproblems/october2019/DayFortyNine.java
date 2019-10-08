@@ -20,11 +20,7 @@ public class DayFortyNine {
 		if (givenArray.length == 0) {
 			return maxNum;
 		} else if (givenArray.length == 1) {
-			if (givenArray[0] < 0) {
-				return maxNum;
-			} else {
-				return maxNum = givenArray[0];
-			}
+			return maxNum = (givenArray[0] < 0) ? maxNum : givenArray[0];
 		} else if (givenArray.length > 1){
 			for(int index = 0; index < givenArray.length; index++) {
 				maxNum = ((maxNum + givenArray[index]) < 0) ? 0 : (maxNum + givenArray[index]);
