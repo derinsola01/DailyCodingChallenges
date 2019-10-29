@@ -8,16 +8,58 @@ public class DaySixtyNineEasy {
 	private static final Logger logger = LogManager.getLogger(DaySixtyNineEasy.class);
 
 	public static void main(String[] args) {
-		int[] givenArray = {-10, -10, 5, 2, 10, 50, 1, 2, 3};
-		int highestProduct = getHighestProduct(givenArray);
-		logger.debug("highestProduct holds: " + highestProduct);
+		int[] givenArray = {-10, -10, 5, 10, 20, 15, 100, 2, 1, 4, 5};
+		int highestProductBrute = getHighestProductBrute(givenArray);
+		int highestProductSplit = getHighestProductSplit(givenArray);
+		logger.debug("highestProductBrute holds: " + highestProductBrute);
+		logger.debug("highestProductSplit holds: " + highestProductSplit);
 	}
 
-	private static int getHighestProduct(int[] givenArray) {
+	private static int getHighestProductSplit(int[] givenArray) {
+		int highProduct = 0;
+		if(givenArray.length == 3) {
+			return justThree(givenArray);
+		} else if (givenArray.length > 3) {
+			int[] firstSet = new int[givenArray.length - 2];
+			int[] secondSet = new int[givenArray.length - 2];
+			int[] thirdSet = new int[givenArray.length - 2];
+			
+			int indexCounter = 0;
+			for(int firstIndex = 0; firstIndex < givenArray.length - 2; firstIndex++) {
+				firstSet[indexCounter] = givenArray[firstIndex];
+				indexCounter++;
+			}
+			indexCounter = 0;
+			for(int secondIndex = 1; secondIndex < givenArray.length - 1; secondIndex++) {
+				secondSet[indexCounter] = givenArray[secondIndex];
+				indexCounter++;
+			}
+			indexCounter = 0;
+			for(int thirdIndex = 2; thirdIndex < givenArray.length; thirdIndex++) {
+				thirdSet[indexCounter] = givenArray[thirdIndex];
+				indexCounter++;
+			}
+			
+			for (int mergeIndex = 0; mergeIndex < firstSet.length; mergeIndex++) {
+				int tempProd = firstSet[mergeIndex] * secondSet[mergeIndex] * thirdSet[mergeIndex];
+				highProduct = (highProduct > tempProd) ? highProduct : tempProd;
+			}
+			
+		}
+		
+		return highProduct;
+	}
+	
+	private static int justThree(int[] givenArray) {
+		return givenArray[0] * givenArray[1] * givenArray[2];
+	}
+
+	private static int getHighestProductBrute(int[] givenArray) {
 		int highProd = 0;
 		if(givenArray.length == 3) {
-			highProd = givenArray[0] * givenArray[1] * givenArray[2];
-		} else if (givenArray.length > 3) {
+			return justThree(givenArray);
+		} 
+		else if (givenArray.length > 3) {
 			for(int outerIndex = 0; outerIndex < givenArray.length - 2; outerIndex++) {
 				int indexLimit = outerIndex + 2;
 				int tempProduct =  givenArray[outerIndex];
