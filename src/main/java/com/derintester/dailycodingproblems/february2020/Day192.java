@@ -40,8 +40,6 @@ public class Day192 {
 			} else if ((givenArr[index] == 0) && index < limit) {
 				return result;
 			} 
-			
-			
 		}
 		return result;
 	}
