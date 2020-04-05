@@ -5,7 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class SalesTaxCalculator {
+	
+	public static final Logger logger = LogManager.getLogger(PreviewCodingChallenge.class);
 
 	public static void main(String[] args) {
 		String input1 = "1 book at 12.49";
@@ -22,7 +27,7 @@ public class SalesTaxCalculator {
 
 	private static void printReceipt(Map<String, Float> mapToPrint) {
 		for (Map.Entry<String,Float> entry : mapToPrint.entrySet())  
-            System.out.println(entry.getKey() + ": " + entry.getValue()); 
+			logger.debug(entry.getKey() + ": " + entry.getValue()); 
 	}
 
 	private static Map<String, Float> tokenizeInput(List<String> inputString) {
