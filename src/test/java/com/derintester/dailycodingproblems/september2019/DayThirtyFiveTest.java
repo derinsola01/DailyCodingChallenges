@@ -1,6 +1,9 @@
 package com.derintester.dailycodingproblems.september2019;
 
+import junit.framework.Test;
 import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
 import com.derintester.dailycodingproblems.september2019.DayThirtyFive;
 
 public class DayThirtyFiveTest extends TestCase {
@@ -11,36 +14,30 @@ public class DayThirtyFiveTest extends TestCase {
 		assertTrue( DayThirtyFive.sortCharArrayInReverse(givenCharArray)
 				== (returnArray) );
 	}
+	
+	/**
+	 * Create the test case
+	 *
+	 * @param testName name of the test case
+	 */
+	public DayThirtyFiveTest( String testName )
+	{
+	    super( testName );
+	}
 
+	/**
+	 * @return the suite of tests being tested
+	 */
+	public static Test suite()
+	{
+	    return new TestSuite( DayThirtyFiveTest.class );
+	}
+
+	/**
+	 * Rigourous Test :-)
+	 */
+	public void testApp()
+	{
+	    assertTrue( true );
+	}
 }
-
-
-//public class AppTest 
-//
-//{
-///**
-// * Create the test case
-// *
-// * @param testName name of the test case
-// */
-//public AppTest( String testName )
-//{
-//    super( testName );
-//}
-//
-///**
-// * @return the suite of tests being tested
-// */
-//public static Test suite()
-//{
-//    return new TestSuite( AppTest.class );
-//}
-//
-///**
-// * Rigourous Test :-)
-// */
-//public void testApp()
-//{
-//    assertTrue( true );
-//}
-//}
