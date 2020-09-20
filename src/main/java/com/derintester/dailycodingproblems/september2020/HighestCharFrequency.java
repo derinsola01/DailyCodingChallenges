@@ -11,7 +11,7 @@ public class HighestCharFrequency {
 	private static final Logger logger = LogManager.getLogger(HighestCharFrequency.class);
 
 	public static void main(String[] args) {
-		String word = "bbadddeefe";
+		String word = "bbadddeefe9999";
 		char highestChar = getCharWithHighestFrequency(word);
 		logger.debug("highestChar is: {}", highestChar);
 	}
@@ -31,7 +31,7 @@ public class HighestCharFrequency {
 		for(int index = 0; index < charArr.length; index++) {
 			if(charMap.get(charArr[index]) != null) {
 				charMap.put(charArr[index], charMap.get(charArr[index]) + 1);
-				if (charMap.get(charArr[index])  > highestFrequency) {
+				if (charMap.get(charArr[index]) > highestFrequency) {
 					highestFrequency = charMap.get(charArr[index]);
 					responseChar = charArr[index];
 				}
