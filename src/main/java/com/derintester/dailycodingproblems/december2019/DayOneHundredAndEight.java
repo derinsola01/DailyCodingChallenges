@@ -6,10 +6,17 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * @author derin
+ * 
+ * This solution is nowhere near optimal.
+ *
+ */
 public class DayOneHundredAndEight {
 	
 	private static final Logger logger = LogManager.getLogger(DayOneHundredAndEight.class);
 
+	
 	public static void main(String[] args) {
 		String A = "abcde";
 		String B = "cdeab";
